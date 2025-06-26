@@ -1,0 +1,52 @@
+{
+  "quizzes": {
+    "missing-parts": {
+      "title": "Guess the Missing Picture Parts",
+      "description": "whaaaat waaaas miiiising?",
+      "icon": "fas fa-heart",
+      "questions": []
+    },
+    "tenerife-croatia": {
+      "title": "Tenerife or Croatia?",
+      "description": "Beach holidays, so confusing, where did we go?",
+      "icon": "fas fa-plane",
+      "questions": []
+    },
+    "restaurants": {
+      "title": "Restaurants or food where you weren't present?",
+      "description": "We always eat together, but sometimes not, so, what did you eat without me???",
+      "icon": "fas fa-laugh",
+      "questions": []
+    },
+    "funny-moments": {
+      "title": "Funniest moments of Natasha - who took this picture?",
+      "description": "I'm not sure, but I'm sure it's not me.",
+      "icon": "fas fa-star",
+      "questions": []
+    },
+    "others": {
+      "title": "Other Special Moments",
+      "description": "Other special memories",
+      "icon": "fas fa-star",
+      "questions": [
+        {
+          "id": "1750973347635",
+          "image": "uploads/quiz-images/1750973347630-18296275.jpeg",
+          "question": "About which arthur is qi consulting with Lars",
+          "answer": "the bald one",
+          "notes": "2022??? add the dates girls!",
+          "category": "others"
+        },
+        {
+          "id": "1750973516340",
+          "image": "uploads/quiz-images/1750973516335-760449130.jpeg",
+          "question": "Why is Qi like this",
+          "answer": "poooooot",
+          "notes": "",
+          "category": "others"
+        }
+      ]
+    }
+  },
+  "images": {}
+}

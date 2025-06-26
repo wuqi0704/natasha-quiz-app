@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Admin - 10 Years in Germany</title>
+    <link rel="stylesheet" href="admin-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <header class="admin-header">
+            <h1><i class="fas fa-cog"></i> Quiz Admin Panel</h1>
+            <p>Manage your memory quiz content</p>
+        </header>
+
+        <div class="admin-content">
+            <!-- Upload Section -->
+            <div class="upload-section">
+                <h2><i class="fas fa-upload"></i> Upload New Question</h2>
+                <form id="uploadForm" class="upload-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="imageUpload">Image:</label>
+                            <div class="image-upload-area" id="imageUploadArea">
+                                <div class="upload-placeholder" id="uploadPlaceholder">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Click to select image or drag and drop</p>
+                                    <input type="file" id="imageUpload" accept="image/*" required style="display: none;">
+                                </div>
+                                <div class="image-preview" id="imagePreview" style="display: none;">
+                                    <img id="previewImg" src="" alt="Preview">
+                                    <button type="button" class="remove-image" id="removeImage">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="categorySelect">Category:</label>
+                            <select id="categorySelect" required>
+                                <option value="">Select a category</option>
+                                <option value="missing-parts">Guess the Missing Picture Parts</option>
+                                <option value="tenerife-croatia">Tenerife or Croatia?</option>
+                                <option value="restaurants">Restaurants or food where you weren't present?</option>
+                                <option value="funny-moments">Funniest moments of Natasha - who took this picture?</option>
+                                <option value="others">Other Special Moments</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="questionText">Question:</label>
+                            <textarea id="questionText" placeholder="Enter your question here..." required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="answerText">Answer:</label>
+                            <textarea id="answerText" placeholder="Enter the correct answer..." required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="notesText">Additional Notes (optional):</label>
+                            <textarea id="notesText" placeholder="Any additional notes or context..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="upload-btn" id="submitBtn">
+                            <i class="fas fa-save"></i> Upload Question
+                        </button>
+                        <button type="button" class="reset-btn" id="resetBtn">
+                            <i class="fas fa-undo"></i> Reset Form
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Questions Management -->
+            <div class="questions-section">
+                <h2><i class="fas fa-list"></i> Manage Questions</h2>
+                
+                <div class="category-filter">
+                    <label for="filterCategory">Filter by Category:</label>
+                    <select id="filterCategory">
+                        <option value="">All Categories</option>
+                        <option value="missing-parts">Guess the Missing Picture Parts</option>
+                        <option value="tenerife-croatia">Tenerife or Croatia?</option>
+                        <option value="restaurants">Restaurants or food where you weren't present?</option>
+                        <option value="funny-moments">Funniest moments of Natasha - who took this picture?</option>
+                        <option value="others">Other Special Moments</option>
+                    </select>
+                </div>
+
+                <div class="questions-list" id="questionsList">
+                    <!-- Questions will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Status Messages -->
+            <div class="status-section">
+                <div class="status-message" id="statusMessage"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation to Main Site -->
+    <div class="nav-to-main">
+        <a href="index.html" class="main-link">
+            <i class="fas fa-home"></i> Back to Main Site
+        </a>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html> 
