@@ -251,220 +251,47 @@ class QuizSystem {
             const response = await fetch(`${serverUrl}/api/quiz-data`);
             if (response.ok) {
                 this.quizData = await response.json();
+                console.log('Quiz data loaded successfully:', this.quizData);
             } else {
-                // Fallback to default data if API doesn't work
-                this.quizData = {
-                    quizzes: {
-                        'missing-parts': {
-                            title: 'Guess the Missing Picture Parts',
-                            questions: [
-                                {
-                                    image: 'https://via.placeholder.com/400x300/667eea/ffffff?text=Missing+Part+1',
-                                    question: 'What was missing from this photo?',
-                                    options: ['A person', 'A landmark', 'A car', 'A building'],
-                                    correct: 0
-                                },
-                                {
-                                    image: 'https://via.placeholder.com/400x300/764ba2/ffffff?text=Missing+Part+2',
-                                    question: 'Which part of the scene was cut off?',
-                                    options: ['The sky', 'The ground', 'The left side', 'The right side'],
-                                    correct: 2
-                                },
-                                {
-                                    image: 'https://via.placeholder.com/400x300/667eea/ffffff?text=Missing+Part+3',
-                                    question: 'What object was missing from this picture?',
-                                    options: ['A tree', 'A sign', 'A person', 'A window'],
-                                    correct: 1
-                                },
-                                {
-                                    image: 'https://via.placeholder.com/400x300/764ba2/ffffff?text=Missing+Part+4',
-                                    question: 'Which detail was not visible in the original?',
-                                    options: ['The background', 'The foreground', 'The middle ground', 'The lighting'],
-                                    correct: 0
-                                },
-                                {
-                                    image: 'https://via.placeholder.com/400x300/667eea/ffffff?text=Missing+Part+5',
-                                    question: 'What was missing from the composition?',
-                                    options: ['Color', 'Texture', 'Depth', 'All of the above'],
-                                    correct: 3
-                                },
-                                {
-                                    image: 'https://via.placeholder.com/400x300/764ba2/ffffff?text=Missing+Part+6',
-                                    question: 'Which element was incomplete in this shot?',
-                                    options: ['The subject', 'The setting', 'The mood', 'The story'],
-                                    correct: 1
-                                }
-                            ]
-                        },
-                        'tenerife-croatia': {
-                            title: 'Tenerife or Croatia?',
-                            questions: [
-                                {
-                                    image: 'https://via.placeholder.com/400x300/667eea/ffffff?text=Beach+1',
-                                    question: 'Where was this beach photo taken?',
-                                    options: ['Tenerife', 'Croatia', 'Both', 'Neither'],
-                                    correct: 0
-                                },
-                                {
-                                    image: 'https://via.placeholder.com/400x300/764ba2/ffffff?text=Beach+2',
-                                    question: 'Which country has this coastline?',
-                                    options: ['Tenerife', 'Croatia', 'Spain', 'Italy'],
-                                    correct: 1
-                                },
-                                {
-                                    image: 'https://via.placeholder.com/400x300/667eea/ffffff?text=Beach+3',
-                                    question: 'Where did we see this sunset?',
-                                    options: ['Tenerife', 'Croatia', 'Greece', 'Portugal'],
-                                    correct: 0
-                                },
-                                {
-                                    image: 'https://via.placeholder.com/400x300/764ba2/ffffff?text=Beach+4',
-                                    question: 'Which destination had this architecture?',
-                                    options: ['Tenerife', 'Croatia', 'Both', 'Neither'],
-                                    correct: 1
-                                },
-                                {
-                                    image: 'https://via.placeholder.com/400x300/667eea/ffffff?text=Beach+5',
-                                    question: 'Where was this food photo taken?',
-                                    options: ['Tenerife', 'Croatia', 'Spain', 'Mediterranean'],
-                                    correct: 0
-                                },
-                                {
-                                    image: 'https://via.placeholder.com/400x300/764ba2/ffffff?text=Beach+6',
-                                    question: 'Which place had this view?',
-                                    options: ['Tenerife', 'Croatia', 'Both', 'Neither'],
-                                    correct: 1
-                                }
-                            ]
-                        },
-                        'restaurants': {
-                            title: 'Restaurants Where You Weren\'t Present',
-                            questions: [
-                                {
-                                    image: 'https://via.placeholder.com/400x300/667eea/ffffff?text=Restaurant+1',
-                                    question: 'What did I eat at this restaurant?',
-                                    options: ['Pizza', 'Pasta', 'Sushi', 'Burger'],
-                                    correct: 2
-                                },
-                                {
-                                    image: 'https://via.placeholder.com/400x300/764ba2/ffffff?text=Restaurant+2',
-                                    question: 'Which cuisine was this?',
-                                    options: ['Italian', 'Japanese', 'Mexican', 'Thai'],
-                                    correct: 0
-                                },
-                                {
-                                    image: 'https://via.placeholder.com/400x300/667eea/ffffff?text=Restaurant+3',
-                                    question: 'What was the main dish here?',
-                                    options: ['Steak', 'Fish', 'Chicken', 'Vegetarian'],
-                                    correct: 1
-                                },
-                                {
-                                    image: 'https://via.placeholder.com/400x300/764ba2/ffffff?text=Restaurant+4',
-                                    question: 'Where was this restaurant located?',
-                                    options: ['City center', 'Suburbs', 'Airport', 'Hotel'],
-                                    correct: 0
-                                },
-                                {
-                                    image: 'https://via.placeholder.com/400x300/667eea/ffffff?text=Restaurant+5',
-                                    question: 'What was the dessert?',
-                                    options: ['Ice cream', 'Cake', 'Fruit', 'Chocolate'],
-                                    correct: 1
-                                },
-                                {
-                                    image: 'https://via.placeholder.com/400x300/764ba2/ffffff?text=Restaurant+6',
-                                    question: 'How much did this meal cost?',
-                                    options: ['€10-20', '€20-30', '€30-40', '€40+'],
-                                    correct: 2
-                                }
-                            ]
-                        },
-                        'funny-moments': {
-                            title: 'Funniest Moments - Who Took This Picture?',
-                            questions: [
-                                {
-                                    image: 'https://via.placeholder.com/400x300/667eea/ffffff?text=Funny+1',
-                                    question: 'Who captured this embarrassing moment?',
-                                    options: ['You', 'Me', 'A stranger', 'Both of us'],
-                                    correct: 1
-                                },
-                                {
-                                    image: 'https://via.placeholder.com/400x300/764ba2/ffffff?text=Funny+2',
-                                    question: 'Who was behind the camera for this shot?',
-                                    options: ['You', 'Me', 'A friend', 'Self-timer'],
-                                    correct: 0
-                                },
-                                {
-                                    image: 'https://via.placeholder.com/400x300/667eea/ffffff?text=Funny+3',
-                                    question: 'Who took this candid photo?',
-                                    options: ['You', 'Me', 'A passerby', 'A waiter'],
-                                    correct: 1
-                                },
-                                {
-                                    image: 'https://via.placeholder.com/400x300/764ba2/ffffff?text=Funny+4',
-                                    question: 'Who was the photographer here?',
-                                    options: ['You', 'Me', 'A tourist', 'A local'],
-                                    correct: 0
-                                },
-                                {
-                                    image: 'https://via.placeholder.com/400x300/667eea/ffffff?text=Funny+5',
-                                    question: 'Who snapped this moment?',
-                                    options: ['You', 'Me', 'A stranger', 'Both'],
-                                    correct: 1
-                                },
-                                {
-                                    image: 'https://via.placeholder.com/400x300/764ba2/ffffff?text=Funny+6',
-                                    question: 'Who was responsible for this photo?',
-                                    options: ['You', 'Me', 'A friend', 'A family member'],
-                                    correct: 0
-                                }
-                            ]
-                        },
-                        'others': {
-                            title: 'Other Special Moments',
-                            questions: [
-                                {
-                                    image: 'https://via.placeholder.com/400x300/667eea/ffffff?text=Other+1',
-                                    question: 'What was happening in this moment?',
-                                    options: ['Celebration', 'Travel', 'Work', 'Relaxation'],
-                                    correct: 0
-                                },
-                                {
-                                    image: 'https://via.placeholder.com/400x300/764ba2/ffffff?text=Other+2',
-                                    question: 'Where were we in this photo?',
-                                    options: ['Home', 'Abroad', 'Work', 'Outdoors'],
-                                    correct: 1
-                                }
-                            ]
-                        }
-                    }
-                };
+                throw new Error('Failed to load quiz data from API');
             }
         } catch (error) {
             console.error('Error loading quiz data:', error);
-            // Use fallback data if API fails
+            // Fallback to default data structure if API doesn't work
             this.quizData = {
                 quizzes: {
                     'missing-parts': {
                         title: 'Guess the Missing Picture Parts',
+                        description: 'whaaaat waaaas miiiising?',
+                        icon: 'fas fa-heart',
                         questions: []
                     },
                     'tenerife-croatia': {
                         title: 'Tenerife or Croatia?',
+                        description: 'Beach holidays, so confusing, where did we go?',
+                        icon: 'fas fa-plane',
                         questions: []
                     },
                     'restaurants': {
-                        title: 'Restaurants Where You Weren\'t Present',
+                        title: 'Restaurants or food where you weren\'t present?',
+                        description: 'We always eat together, but sometimes not, so, what did you eat without me???',
+                        icon: 'fas fa-laugh',
                         questions: []
                     },
                     'funny-moments': {
-                        title: 'Funniest Moments - Who Took This Picture?',
+                        title: 'Funniest moments of Natasha - who took this picture?',
+                        description: 'I\'m not sure, but I\'m sure it\'s not me.',
+                        icon: 'fas fa-star',
                         questions: []
                     },
                     'others': {
                         title: 'Other Special Moments',
+                        description: 'Other special memories',
+                        icon: 'fas fa-star',
                         questions: []
                     }
-                }
+                },
+                images: {}
             };
         }
     }
@@ -476,7 +303,13 @@ class QuizSystem {
             card.addEventListener('click', (e) => {
                 const quizType = card.getAttribute('data-quiz');
                 if (quizType && this.quizData.quizzes && this.quizData.quizzes[quizType]) {
-                    this.startQuiz(quizType);
+                    const quiz = this.quizData.quizzes[quizType];
+                    if (quiz.questions && quiz.questions.length > 0) {
+                        this.startQuiz(quizType);
+                    } else {
+                        // Show message if no questions available
+                        this.showStatus(`No questions available for ${quiz.title} yet. Add some questions in the admin panel!`, 'info');
+                    }
                 }
             });
         });
@@ -560,18 +393,19 @@ class QuizSystem {
         // Clear and populate options
         quizOptions.innerHTML = '';
         
-        // Handle different question formats
-        let options = [];
-        if (question.options) {
-            // Old format with options array
-            options = question.options;
-        } else if (question.answer) {
-            // New format - create options from the answer
-            options = [question.answer, 'I don\'t remember', 'Maybe...', 'Not sure'];
-        } else {
-            // Fallback
-            options = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
-        }
+        // Add scoring options first
+        const scoringLabel = document.createElement('div');
+        scoringLabel.className = 'scoring-label';
+        scoringLabel.textContent = 'How did they do?';
+        quizOptions.appendChild(scoringLabel);
+        
+        // Create options for manual scoring
+        const options = [
+            'Correct!',
+            'Incorrect',
+            'Partially Correct',
+            'Skip'
+        ];
         
         options.forEach((option, index) => {
             const optionElement = document.createElement('div');
@@ -583,15 +417,27 @@ class QuizSystem {
                 optionElement.classList.add('selected');
             }
             
-            optionElement.addEventListener('click', () => this.selectOption(index));
+            optionElement.addEventListener('click', () => this.selectOption(index, question));
             quizOptions.appendChild(optionElement);
         });
+        
+        // Create answer display area (initially hidden)
+        const answerDisplay = document.createElement('div');
+        answerDisplay.className = 'answer-display';
+        answerDisplay.id = 'answerDisplay';
+        answerDisplay.style.display = 'none';
+        answerDisplay.innerHTML = `
+            <div class="answer-label">Correct Answer:</div>
+            <div class="answer-text">${question.answer}</div>
+            ${question.notes ? `<div class="answer-notes">Note: ${question.notes}</div>` : ''}
+        `;
+        quizOptions.appendChild(answerDisplay);
         
         // Update navigation buttons
         this.updateNavigationButtons();
     }
 
-    selectOption(optionIndex) {
+    selectOption(optionIndex, question) {
         // Remove previous selection
         const options = document.querySelectorAll('.quiz-option');
         options.forEach(option => option.classList.remove('selected'));
@@ -599,6 +445,17 @@ class QuizSystem {
         // Select new option
         options[optionIndex].classList.add('selected');
         this.userAnswers[this.currentQuestionIndex] = optionIndex;
+        
+        // Show the answer after selection
+        const answerDisplay = document.getElementById('answerDisplay');
+        if (answerDisplay) {
+            answerDisplay.style.display = 'block';
+            answerDisplay.innerHTML = `
+                <div class="answer-label">Correct Answer:</div>
+                <div class="answer-text">${question.answer}</div>
+                ${question.notes ? `<div class="answer-notes">Note: ${question.notes}</div>` : ''}
+            `;
+        }
         
         // Enable next button if not on last question
         const nextBtn = document.getElementById('nextBtn');
@@ -640,48 +497,63 @@ class QuizSystem {
     submitQuiz() {
         const quiz = this.quizData.quizzes[this.currentQuiz];
         let correctAnswers = 0;
+        let partiallyCorrectAnswers = 0;
+        let skippedAnswers = 0;
         const results = [];
         
         quiz.questions.forEach((question, index) => {
+            const selectedOption = this.userAnswers[index];
             let isCorrect = false;
+            let isPartiallyCorrect = false;
             let userAnswer = '';
-            let correctAnswer = '';
+            let correctAnswer = question.answer;
+            let score = 0;
             
-            if (question.options) {
-                // Old format with options array
-                isCorrect = this.userAnswers[index] === question.correct;
-                userAnswer = question.options[this.userAnswers[index] || 0];
-                correctAnswer = question.options[question.correct];
-            } else if (question.answer) {
-                // New format with single answer
-                const selectedOption = this.userAnswers[index];
-                if (selectedOption === 0) {
-                    // First option is the correct answer
-                    isCorrect = true;
-                    userAnswer = question.answer;
-                    correctAnswer = question.answer;
-                } else {
-                    isCorrect = false;
-                    userAnswer = ['I don\'t remember', 'Maybe...', 'Not sure'][selectedOption - 1] || 'No answer';
-                    correctAnswer = question.answer;
-                }
+            if (selectedOption === 0) {
+                // Correct
+                isCorrect = true;
+                userAnswer = 'Correct!';
+                score = 1;
+                correctAnswers++;
+            } else if (selectedOption === 1) {
+                // Incorrect
+                isCorrect = false;
+                isPartiallyCorrect = false;
+                userAnswer = 'Incorrect';
+                score = 0;
+            } else if (selectedOption === 2) {
+                // Partially correct
+                isCorrect = false;
+                isPartiallyCorrect = true;
+                userAnswer = 'Partially Correct';
+                score = 0.5;
+                partiallyCorrectAnswers++;
+            } else if (selectedOption === 3) {
+                // Skip
+                isCorrect = false;
+                isPartiallyCorrect = false;
+                userAnswer = 'Skipped';
+                score = 0;
+                skippedAnswers++;
             }
-            
-            if (isCorrect) correctAnswers++;
             
             results.push({
                 question: question.question,
                 userAnswer: userAnswer,
                 correctAnswer: correctAnswer,
-                isCorrect: isCorrect
+                isCorrect: isCorrect,
+                isPartiallyCorrect: isPartiallyCorrect,
+                score: score,
+                notes: question.notes || ''
             });
         });
         
-        const score = Math.round((correctAnswers / quiz.questions.length) * 100);
-        this.showResults(score, results);
+        const totalQuestions = quiz.questions.length - skippedAnswers;
+        const score = totalQuestions > 0 ? Math.round((correctAnswers / totalQuestions) * 100) : 0;
+        this.showResults(score, results, correctAnswers, partiallyCorrectAnswers, totalQuestions);
     }
 
-    showResults(score, results) {
+    showResults(score, results, correctCount, partiallyCorrectCount, totalQuestions) {
         const resultsModal = document.getElementById('resultsModal');
         const scorePercentage = document.getElementById('scorePercentage');
         const scoreMessage = document.getElementById('scoreMessage');
@@ -691,9 +563,9 @@ class QuizSystem {
         
         // Set score message based on performance
         if (score >= 90) {
-            scoreMessage.textContent = 'Excellent! You have an amazing memory!';
+            scoreMessage.textContent = 'Excellent! Amazing memory!';
         } else if (score >= 70) {
-            scoreMessage.textContent = 'Great job! You remember well!';
+            scoreMessage.textContent = 'Great job! Good memory!';
         } else if (score >= 50) {
             scoreMessage.textContent = 'Good effort! Some memories are fuzzy.';
         } else {
@@ -701,15 +573,52 @@ class QuizSystem {
         }
         
         // Create results summary
-        resultsSummary.innerHTML = '<h4>Question Summary:</h4>';
+        resultsSummary.innerHTML = `
+            <h4>Question Summary:</h4>
+            <div class="score-breakdown">
+                <div class="breakdown-item correct">
+                    <span class="breakdown-label">Correct:</span>
+                    <span class="breakdown-count">${correctCount}</span>
+                </div>
+                <div class="breakdown-item partial">
+                    <span class="breakdown-label">Partially Correct:</span>
+                    <span class="breakdown-count">${partiallyCorrectCount}</span>
+                </div>
+                <div class="breakdown-item total">
+                    <span class="breakdown-label">Total Questions:</span>
+                    <span class="breakdown-count">${totalQuestions}</span>
+                </div>
+            </div>
+        `;
+        
         results.forEach((result, index) => {
             const resultItem = document.createElement('div');
             resultItem.className = 'result-item';
+            
+            // Determine status class and text
+            let statusClass = 'incorrect';
+            let statusText = '✗ Incorrect';
+            
+            if (result.isCorrect) {
+                statusClass = 'correct';
+                statusText = '✓ Correct';
+            } else if (result.isPartiallyCorrect) {
+                statusClass = 'partial';
+                statusText = '~ Partially Correct';
+            }
+            
             resultItem.innerHTML = `
-                <span>Question ${index + 1}: ${result.question}</span>
-                <span class="result-status ${result.isCorrect ? 'correct' : 'incorrect'}">
-                    ${result.isCorrect ? 'Correct' : 'Incorrect'}
+                <div class="result-question">
+                    <strong>Question ${index + 1}:</strong> ${result.question}
+                </div>
+                <div class="result-answers">
+                    <span class="your-answer">Your judgment: ${result.userAnswer}</span>
+                    <span class="correct-answer">Correct answer: ${result.correctAnswer}</span>
+                </div>
+                <span class="result-status ${statusClass}">
+                    ${statusText}
                 </span>
+                ${result.notes ? `<div class="result-notes">Note: ${result.notes}</div>` : ''}
             `;
             resultsSummary.appendChild(resultItem);
         });
@@ -732,6 +641,54 @@ class QuizSystem {
     retryQuiz() {
         this.closeResults();
         this.startQuiz(this.currentQuiz);
+    }
+
+    showStatus(message, type = 'info') {
+        // Create a temporary status message
+        const statusDiv = document.createElement('div');
+        statusDiv.className = `status-message ${type}`;
+        statusDiv.textContent = message;
+        statusDiv.style.position = 'fixed';
+        statusDiv.style.top = '20px';
+        statusDiv.style.left = '50%';
+        statusDiv.style.transform = 'translateX(-50%)';
+        statusDiv.style.zIndex = '10000';
+        statusDiv.style.padding = '12px 20px';
+        statusDiv.style.borderRadius = '8px';
+        statusDiv.style.fontWeight = '500';
+        statusDiv.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+        
+        // Set colors based on type
+        switch(type) {
+            case 'success':
+                statusDiv.style.background = '#dcfce7';
+                statusDiv.style.color = '#166534';
+                statusDiv.style.border = '1px solid #bbf7d0';
+                break;
+            case 'error':
+                statusDiv.style.background = '#fef2f2';
+                statusDiv.style.color = '#dc2626';
+                statusDiv.style.border = '1px solid #fecaca';
+                break;
+            case 'warning':
+                statusDiv.style.background = '#fef3c7';
+                statusDiv.style.color = '#d97706';
+                statusDiv.style.border = '1px solid #fde68a';
+                break;
+            default:
+                statusDiv.style.background = '#dbeafe';
+                statusDiv.style.color = '#1d4ed8';
+                statusDiv.style.border = '1px solid #bfdbfe';
+        }
+        
+        document.body.appendChild(statusDiv);
+        
+        // Remove after 5 seconds
+        setTimeout(() => {
+            if (statusDiv.parentNode) {
+                statusDiv.parentNode.removeChild(statusDiv);
+            }
+        }, 5000);
     }
 }
 
